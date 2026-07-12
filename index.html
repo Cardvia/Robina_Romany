@@ -1,390 +1,431 @@
 <!DOCTYPE html>
 <html lang="ar" dir="auto">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <title>Rubies</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <style>
-        * {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Rubies · Robina Romany</title>
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(24px) saturate(200%);
-            -webkit-backdrop-filter: blur(24px) saturate(200%);
-            border: 1px solid rgba(227, 50, 132, 0.15);
-            box-shadow: 0 30px 70px -20px rgba(227, 50, 132, 0.25);
-        }
+    /* ===== خلفية وردية متدرجة مثل الكود الأول ===== */
+    body {
+      background: linear-gradient(145deg, #FCE7F5 0%, #ffffff 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      margin: 0;
+    }
 
-        .fade-in {
-            animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    /* ===== الكارد الزجاجي الوردي ===== */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(24px) saturate(200%);
+      -webkit-backdrop-filter: blur(24px) saturate(200%);
+      border: 1px solid rgba(227, 50, 132, 0.15);
+      box-shadow: 0 30px 70px -20px rgba(227, 50, 132, 0.25);
+      border-radius: 2.5rem;
+      overflow: hidden;
+      transition: all 0.5s;
+    }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .fade-in {
+      animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(16px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-        body {
-            background: linear-gradient(145deg, #FCE7F5 0%, #ffffff 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
+    /* ===== عناصر وردية ===== */
+    .pink-border {
+      border-color: rgba(227, 50, 132, 0.15);
+    }
+    .profile-ring {
+      border: 3px solid rgba(227, 50, 132, 0.2);
+      box-shadow: 0 0 50px -12px rgba(227, 50, 132, 0.15);
+    }
+    .header-gradient {
+      background: linear-gradient(180deg, rgba(227, 50, 132, 0.04) 0%, transparent 100%);
+    }
 
-        .pink-border {
-            border-color: rgba(227, 50, 132, 0.15);
-        }
-        .pink-border-hover:hover {
-            border-color: rgba(227, 50, 132, 0.35);
-        }
+    /* ===== أيقونات السوشيال ===== */
+    .social-icon {
+      color: #E33284;
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      color: #b01e68;
+      transform: scale(1.15);
+      text-shadow: 0 0 30px rgba(227, 50, 132, 0.25);
+    }
 
-        .social-icon {
-            color: #E33284;
-            transition: all 0.3s ease;
-        }
-        .social-icon:hover {
-            color: #b01e68;
-            transform: scale(1.15);
-            text-shadow: 0 0 30px rgba(227, 50, 132, 0.25);
-        }
+    /* ===== زر الفوشيا الرئيسي ===== */
+    .btn-fuchsia {
+      background: linear-gradient(135deg, #E33284, #c02a72);
+      color: #ffffff;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 8px 28px -8px rgba(227, 50, 132, 0.4);
+      transition: all 0.3s ease;
+    }
+    .btn-fuchsia:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px -10px rgba(227, 50, 132, 0.5);
+    }
+    .btn-fuchsia:active {
+      transform: scale(0.97);
+    }
 
-        .btn-fuchsia {
-            background: linear-gradient(135deg, #E33284, #c02a72);
-            color: #ffffff;
-            font-weight: 700;
-            border: none;
-            box-shadow: 0 8px 28px -8px rgba(227, 50, 132, 0.4);
-            transition: all 0.3s ease;
-        }
-        .btn-fuchsia:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 36px -10px rgba(227, 50, 132, 0.5);
-        }
-        .btn-fuchsia:active {
-            transform: scale(0.97);
-        }
+    /* ===== زر الوردي الفاتح (طلب البطاقة) ===== */
+    .btn-outline-pink {
+      background: rgba(227, 50, 132, 0.06);
+      border: 1px solid rgba(227, 50, 132, 0.2);
+      color: #b01e68;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-pink:hover {
+      background: rgba(227, 50, 132, 0.12);
+      border-color: rgba(227, 50, 132, 0.4);
+      transform: translateY(-2px);
+    }
 
-        .btn-outline-pink {
-            background: rgba(227, 50, 132, 0.06);
-            border: 1px solid rgba(227, 50, 132, 0.2);
-            color: #b01e68;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .btn-outline-pink:hover {
-            background: rgba(227, 50, 132, 0.12);
-            border-color: rgba(227, 50, 132, 0.4);
-            transform: translateY(-2px);
-        }
+    /* ===== أزرار التواصل ===== */
+    .contact-btn {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(227, 50, 132, 0.08);
+      color: #3a1a2a;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      border-radius: 1.25rem;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 500;
+    }
+    .contact-btn:hover {
+      background: rgba(227, 50, 132, 0.08);
+      border-color: rgba(227, 50, 132, 0.25);
+      transform: translateX(4px);
+    }
+    .contact-btn .icon-wrap {
+      color: #E33284;
+      font-size: 1.25rem;
+      width: 2rem;
+    }
 
-        .contact-btn {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(227, 50, 132, 0.08);
-            color: #3a1a2a;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
-        }
-        .contact-btn:hover {
-            background: rgba(227, 50, 132, 0.08);
-            border-color: rgba(227, 50, 132, 0.25);
-            transform: translateX(4px);
-        }
-        .contact-btn .icon-wrap {
-            color: #E33284;
-        }
+    /* ===== QR ===== */
+    .qr-wrapper {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 1.25rem;
+      padding: 0.5rem;
+      border: 1px solid rgba(227, 50, 132, 0.08);
+      transition: all 0.4s ease;
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+    }
+    .qr-wrapper:hover {
+      border-color: rgba(227, 50, 132, 0.25);
+      transform: scale(1.02);
+    }
+    .qr-wrapper img {
+      border-radius: 1rem;
+    }
 
-        .qr-wrapper {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 1.25rem;
-            padding: 0.5rem;
-            border: 1px solid rgba(227, 50, 132, 0.08);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(4px);
-        }
-        .qr-wrapper:hover {
-            border-color: rgba(227, 50, 132, 0.25);
-            transform: scale(1.02);
-        }
-        .qr-wrapper img {
-            border-radius: 1rem;
-        }
+    /* ===== تذييل ===== */
+    .footer-text {
+      color: rgba(227, 50, 132, 0.3);
+      letter-spacing: 0.35em;
+      font-size: 0.6rem;
+      font-weight: 700;
+    }
+    .footer-text span {
+      color: #E33284;
+      opacity: 0.7;
+    }
 
-        .footer-text {
-            color: rgba(227, 50, 132, 0.3);
-            letter-spacing: 0.35em;
-            font-size: 0.6rem;
-            font-weight: 700;
-        }
-        .footer-text span {
-            color: #E33284;
-            opacity: 0.7;
-        }
-
-        .profile-ring {
-            border: 3px solid rgba(227, 50, 132, 0.2);
-            box-shadow: 0 0 50px -12px rgba(227, 50, 132, 0.15);
-        }
-
-        .header-gradient {
-            background: linear-gradient(180deg, rgba(227, 50, 132, 0.04) 0%, transparent 100%);
-        }
-
-        .name-pink {
-            color: #2a0f1c;
-        }
-        .title-pink {
-            color: #a04a70;
-        }
-    </style>
+    /* ===== نصوص ===== */
+    .name-pink {
+      color: #2a0f1c;
+    }
+    .title-pink {
+      color: #a04a70;
+    }
+  </style>
 </head>
 <body>
 
-    <div id="root" class="w-full max-w-md mx-auto fade-in"></div>
+  <div id="root" class="w-full max-w-md mx-auto fade-in"></div>
 
-    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin>
-    </script>
-    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin>
-    </script>
-    <script src="https://unpkg.com/@babel/standalone@7.22.5/babel.min.js">
-    </script>
+  <!-- React + Babel -->
+  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.22.5/babel.min.js"></script>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+  <script type="text/babel">
+    const { useState, useEffect } = React;
 
-        const CONFIG = {
-            fullName: 'Robina Romany',
-            jobTitle: 'Founder of Rubies',
-            arabicTitle: '',
-            bio: 'Digital Business Card',
+    // ============================================================
+    //  CONFIG — بيانات روبينا (من الكود الأول) مع الألوان الوردية
+    // ============================================================
+    const CONFIG = {
+      fullName: 'Robina Romany',
+      jobTitle: 'Founder of Rubies',
+      arabicTitle: '',
+      bio: 'Digital Business Card',
 
-            profileImage: 'https://ik.imagekit.io/fojb8puzo/Screenshot%202026-07-10%20135531.png',
-            profileImageSize: 'w-36 h-36 sm:w-48 sm:h-48',
-            coverImage: 'https://ik.imagekit.io/fojb8puzo/2yhjgtfrdfgvath.png',
+      profileImage: 'https://ik.imagekit.io/fojb8puzo/Screenshot%202026-07-10%20135531.png',
+      profileImageSize: 'w-36 h-36 sm:w-48 sm:h-48',
+      coverImage: 'https://ik.imagekit.io/fojb8puzo/2yhjgtfrdfgvath.png',
 
-            contacts: [
-                { icon: 'fa-solid fa-phone', label: 'Call', url: 'tel:+201201828084' },
-                { icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', url: 'https://wa.me/201201828084' },
-                { icon: 'fa-regular fa-envelope', label: 'Email', url: 'mailto:robinaromany13@gmail.com' },
-                { icon: 'fa-solid fa-coins', label: 'Instapay', url: 'https://ipn.eg/S/robinaromany/instapay/6EFmAQ' },
-            ],
+      // أزرار التواصل (بنفس الترتيب)
+      contacts: [
+        { icon: 'fa-solid fa-phone', label: 'Call', url: 'tel:+201201828084' },
+        { icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', url: 'https://wa.me/201201828084' },
+        { icon: 'fa-regular fa-envelope', label: 'Email', url: 'mailto:robinaromany13@gmail.com' },
+        { icon: 'fa-solid fa-coins', label: 'Instapay', url: 'https://ipn.eg/S/robinaromany/instapay/6EFmAQ' },
+      ],
 
-            socials: [
-                { icon: 'fa-brands fa-instagram', url: 'https://www.facebook.com/robina.romany.3', label: 'Instagram' },
-                { icon: 'fa-brands fa-facebook', url: 'https://www.instagram.com/robina.romany.3', label: 'Facebook' }
-            ],
+      // سوشيال ميديا
+      socials: [
+        { icon: 'fa-brands fa-instagram', url: 'https://www.facebook.com/robina.romany.3', label: 'Instagram' },
+        { icon: 'fa-brands fa-facebook', url: 'https://www.instagram.com/robina.romany.3', label: 'Facebook' }
+      ],
 
-            qrCodeImageUrl: 'https://ik.imagekit.io/fojb8puzo/qr-code%20(19).png',
+      qrCodeImageUrl: 'https://ik.imagekit.io/fojb8puzo/qr-code%20(19).png',
 
-            colors: {
-                cardBg: '255, 255, 255',
-                textPrimary: '#2a0f1c',
-                textSecondary: '#a04a70',
-                textMuted: '#c0809a',
-                buttonBg: 'linear-gradient(135deg, #E33284, #c02a72)',
-                buttonText: '#ffffff',
-                buttonBorder: '227, 50, 132',
-                socialIcon: '#E33284',
-                qrBg: 'rgba(255,255,255,0.3)',
-                footerText: 'rgba(227, 50, 132, 0.3)',
-                border: '227, 50, 132',
-                accent: '#E33284',
-                accentLight: '#FCE7F5',
-            },
+      // الألوان الوردية (تُستخدم في بعض الأنماط المضمنة)
+      colors: {
+        cardBg: '255, 255, 255',
+        textPrimary: '#2a0f1c',
+        textSecondary: '#a04a70',
+        textMuted: '#c0809a',
+        buttonBg: 'linear-gradient(135deg, #E33284, #c02a72)',
+        buttonText: '#ffffff',
+        buttonBorder: '227, 50, 132',
+        socialIcon: '#E33284',
+        qrBg: 'rgba(255,255,255,0.3)',
+        footerText: 'rgba(227, 50, 132, 0.3)',
+        border: '227, 50, 132',
+        accent: '#E33284',
+        accentLight: '#FCE7F5',
+      },
 
-            vCard: {
-                fn: 'Robina Romany',
-                org: '',
-                title: '',
-                tel: '+201201828084',
-                email: 'robinaromany13@gmail.com',
-                url: ''
-            },
+      // بيانات vCard
+      vCard: {
+        fn: 'Robina Romany',
+        org: '',
+        title: '',
+        tel: '+201201828084',
+        email: 'robinaromany13@gmail.com',
+        url: ''
+      },
 
-            whatsappRequestNumber: '+201090225298',
-        };
+      whatsappRequestNumber: '+201090225298',
+    };
 
-        const trackClick = (label) => {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'button_click', { event_category: 'engagement', event_label: label });
-            }
-        };
+    // ============================================================
+    //  UTILS — نفس دوال الكود الثاني (التي تعمل في Safari)
+    // ============================================================
+    const trackClick = (label) => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'button_click', { event_category: 'engagement', event_label: label });
+      }
+    };
 
-        // ============================================================
-        //  ✅  تحميل vCard بطريقة تعمل في Safari (data: URI)
-        // ============================================================
-        const downloadVcard = () => {
-            trackClick('download_vcard');
+    // تحميل vCard (تعمل في Safari)
+    const downloadVcard = () => {
+      trackClick('download_vcard');
+      const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:${CONFIG.vCard.fn || CONFIG.fullName}
+ORG:${CONFIG.vCard.org}
+TITLE:${CONFIG.vCard.title}
+TEL:${CONFIG.vCard.tel}
+EMAIL:${CONFIG.vCard.email}
+URL:${CONFIG.vCard.url}
+END:VCARD`;
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}.vcf`;
+      document.body.appendChild(a);
+      a.click();
+      // تأخير صغير للإزالة
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 150);
+    };
 
-            const vcard = `BEGIN:VCARD
-        VERSION:3.0
-        FN:${CONFIG.vCard.fn || CONFIG.fullName}
-        ORG:${CONFIG.vCard.org}
-        TITLE:${CONFIG.vCard.title}
-        TEL:${CONFIG.vCard.tel}
-        EMAIL:${CONFIG.vCard.email}
-        URL:${CONFIG.vCard.url}
-        END:VCARD`;
+    // تحميل QR
+    const downloadQR = () => {
+      trackClick('download_qr');
+      if (CONFIG.qrCodeImageUrl) {
+        const a = document.createElement('a');
+        a.href = CONFIG.qrCodeImageUrl;
+        a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}_QR.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    };
 
-            // تحويل النص إلى Base64 لتجنب مشاكل الترميز
-            const base64 = btoa(unescape(encodeURIComponent(vcard)));
-            const dataUri = `data:text/vcard;charset=utf-8;base64,${base64}`;
+    // ============================================================
+    //  COMPONENT — بنية الكارد (مأخوذة من الكود الثاني مع تعديلات)
+    // ============================================================
+    function DigitalBusinessCard() {
+      const colors = CONFIG.colors;
 
-            const a = document.createElement('a');
-            a.href = dataUri;
-            a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}.vcf`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        };
+      return (
+        <div className="glass-card">
+          {/* الغلاف العلوي مع صورة الغلاف والصورة الشخصية */}
+          <div className="relative h-48 header-gradient flex items-center justify-center border-b pink-border">
+            {CONFIG.coverImage && (
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-20"
+                style={{ backgroundImage: `url('${CONFIG.coverImage}')` }}
+              />
+            )}
+            <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+              <div
+                className={`${CONFIG.profileImageSize} rounded-full overflow-hidden profile-ring`}
+                style={{ borderColor: `rgba(${colors.border}, 0.25)` }}
+              >
+                <img
+                  src={CONFIG.profileImage}
+                  alt={CONFIG.fullName}
+                  className="w-full h-full object-cover"
+                  onError={(e) => e.target.src = 'https://via.placeholder.com/400?text=Robina'}
+                />
+              </div>
+            </div>
+          </div>
 
-        const downloadQR = () => {
-            trackClick('download_qr');
-            if (CONFIG.qrCodeImageUrl) {
-                const a = document.createElement('a');
-                a.href = CONFIG.qrCodeImageUrl;
-                a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}_QR.png`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            }
-        };
+          {/* المحتوى */}
+          <div className="pt-16 sm:pt-20 pb-6 px-5 sm:px-6 space-y-6">
+            {/* الاسم والمسمى */}
+            <div className="text-center space-y-1">
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight name-pink">
+                {CONFIG.fullName}
+              </h1>
+              <h2 className="text-sm uppercase tracking-[0.2em] font-medium title-pink">
+                {CONFIG.jobTitle}
+              </h2>
+              {CONFIG.arabicTitle && (
+                <p className="text-base font-medium" style={{ color: colors.textMuted }} dir="rtl">
+                  {CONFIG.arabicTitle}
+                </p>
+              )}
+            </div>
 
-        function DigitalBusinessCard() {
-            const colors = CONFIG.colors;
+            {/* السيرة المختصرة */}
+            {CONFIG.bio && (
+              <p className="text-center text-sm leading-relaxed px-2" style={{ color: colors.textSecondary }}>
+                {CONFIG.bio}
+              </p>
+            )}
 
-            return (
-                <div className="glass-card rounded-[2.5rem] shadow-2xl overflow-hidden transition-all duration-500">
+            {/* أزرار التواصل (4 أزرار) */}
+            <div className="grid grid-cols-1 gap-3">
+              {CONFIG.contacts.map((btn, idx) => (
+                <a
+                  key={idx}
+                  href={btn.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-btn"
+                  onClick={() => trackClick(`contact_${btn.label}`)}
+                  aria-label={btn.label}
+                >
+                  <i className={`${btn.icon} icon-wrap`}></i>
+                  <span className="flex-1 text-left text-sm tracking-wide">{btn.label}</span>
+                  <i className="fa-solid fa-chevron-right text-xs opacity-20" style={{ color: '#E33284' }}></i>
+                </a>
+              ))}
+            </div>
 
-                    <div className="relative h-48 header-gradient flex items-center justify-center border-b pink-border">
-                        {CONFIG.coverImage && (
-                            <div
-                                className="absolute inset-0 bg-cover bg-center opacity-20"
-                                style={{ backgroundImage: `url('${CONFIG.coverImage}')` }}
-                            />
-                        )}
+            {/* أيقونات السوشيال */}
+            <div className="flex justify-center items-center gap-6 pt-2">
+              {CONFIG.socials.map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon text-2xl p-2 transition-all"
+                  onClick={() => trackClick(`social_${social.label}`)}
+                  aria-label={social.label}
+                >
+                  <i className={social.icon}></i>
+                </a>
+              ))}
+            </div>
 
-                        <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
-                            <div
-                                className={`${CONFIG.profileImageSize} rounded-full overflow-hidden profile-ring`}
-                                style={{ borderColor: `rgba(${colors.border}, 0.25)` }}
-                            >
-                                <img
-                                    src={CONFIG.profileImage}
-                                    alt={CONFIG.fullName}
-                                    className="w-full h-full object-cover"
-                                    onError={(e) => e.target.src = 'https://via.placeholder.com/400?text=David'}
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="pt-16 sm:pt-20 pb-6 px-5 sm:px-6 space-y-6">
-
-                        <div className="text-center space-y-1">
-                            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight name-pink">
-                                {CONFIG.fullName}
-                            </h1>
-                            <h2 className="text-sm uppercase tracking-[0.2em] font-medium title-pink">
-                                {CONFIG.jobTitle}
-                            </h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 gap-3">
-                            {CONFIG.contacts.map((btn, idx) => (
-                                <a
-                                    key={idx}
-                                    href={btn.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="contact-btn flex items-center gap-4 px-5 py-4 rounded-2xl font-medium transition-all active:scale-[0.97]"
-                                    onClick={() => trackClick(`contact_${btn.label}`)}
-                                    aria-label={btn.label}
-                                >
-                                    <i className={`${btn.icon} text-xl w-8 icon-wrap`}></i>
-                                    <span className="flex-1 text-left text-sm tracking-wide">{btn.label}</span>
-                                    <i className="fa-solid fa-chevron-right text-xs opacity-20" style={{ color: '#E33284' }}></i>
-                                </a>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-center items-center gap-6 pt-2">
-                            {CONFIG.socials.map((social, idx) => (
-                                <a
-                                    key={idx}
-                                    href={social.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="social-icon text-2xl p-2 transition-all"
-                                    onClick={() => trackClick(`social_${social.label}`)}
-                                    aria-label={social.label}
-                                >
-                                    <i className={social.icon}></i>
-                                </a>
-                            ))}
-                        </div>
-
-                        {CONFIG.qrCodeImageUrl && (
-                            <div className="flex justify-center pt-2">
-                                <div className="qr-wrapper cursor-pointer" onClick={downloadQR}>
-                                    <div className="w-32 h-32 p-2 bg-white/40 rounded-2xl hover:scale-[1.02] transition-transform duration-300">
-                                        <img
-                                            src={CONFIG.qrCodeImageUrl}
-                                            alt="QR Code"
-                                            className="w-full h-full object-contain"
-                                        />
-                                    </div>
-                                    <p className="text-center text-[0.6rem] mt-2 tracking-widest opacity-50" style={{ color: '#b01e68' }}>
-                                        اضغط لتحميل QR
-                                    </p>
-                                </div>
-                            </div>
-                        )}
-
-                        <div className="flex flex-col items-center gap-3 pt-4">
-                            <button
-                                onClick={downloadVcard}
-                                className="btn-fuchsia w-full flex items-center justify-center gap-3 px-5 py-4 rounded-2xl font-bold shadow-lg transition-all active:scale-[0.97] btn-shine"
-                            >
-                                <i className="fa-solid fa-address-card text-lg"></i>
-                                <span className="text-sm tracking-wide">Download vCard</span>
-                            </button>
-
-                            <a
-                                href={`https://wa.me/${CONFIG.whatsappRequestNumber}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-outline-pink w-full flex items-center justify-center gap-3 px-5 py-4 rounded-2xl font-semibold transition-all active:scale-[0.97]"
-                            >
-                                <i className="fa-regular fa-id-card text-lg"></i>
-                                <span className="text-sm tracking-wide">Request Your Card</span>
-                            </a>
-                        </div>
-
-                        <div className="pt-6 text-center footer-text">
-                            POWERED BY <span>CARDVIA</span>
-                        </div>
-                    </div>
+            {/* QR Code */}
+            {CONFIG.qrCodeImageUrl && (
+              <div className="flex justify-center pt-2">
+                <div className="qr-wrapper" onClick={downloadQR}>
+                  <div className="w-32 h-32 p-2 bg-white/40 rounded-2xl hover:scale-[1.02] transition-transform duration-300">
+                    <img
+                      src={CONFIG.qrCodeImageUrl}
+                      alt="QR Code"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <p className="text-center text-[0.6rem] mt-2 tracking-widest opacity-50" style={{ color: '#b01e68' }}>
+                    اضغط لتحميل QR
+                  </p>
                 </div>
-            );
-        }
+              </div>
+            )}
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<DigitalBusinessCard />);
-    </script>
+            {/* أزرار الإجراءات (تحميل vCard + طلب البطاقة) */}
+            <div className="flex flex-col items-center gap-3 pt-4">
+              <button
+                onClick={downloadVcard}
+                className="btn-fuchsia w-full flex items-center justify-center gap-3 px-5 py-4 rounded-2xl font-bold shadow-lg transition-all active:scale-[0.97]"
+              >
+                <i className="fa-solid fa-address-card text-lg"></i>
+                <span className="text-sm tracking-wide">Download vCard</span>
+              </button>
 
+              <a
+                href={`https://wa.me/${CONFIG.whatsappRequestNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline-pink w-full flex items-center justify-center gap-3 px-5 py-4 rounded-2xl font-semibold transition-all active:scale-[0.97]"
+                onClick={() => trackClick('request_card_whatsapp')}
+              >
+                <i className="fa-regular fa-id-card text-lg"></i>
+                <span className="text-sm tracking-wide">Request Your Card</span>
+              </a>
+            </div>
+
+            {/* تذييل */}
+            <div className="pt-6 text-center footer-text">
+              POWERED BY <span>CARDVIA</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ============================================================
+    //  رندر التطبيق
+    // ============================================================
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<DigitalBusinessCard />);
+  </script>
 </body>
 </html>
