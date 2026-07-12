@@ -165,9 +165,6 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // ============================================================
-        //  CONFIG — الألوان الجديدة: وردي غامق (فوشيا) + أبيض + وردي فاتح
-        // ============================================================
         const CONFIG = {
             fullName: 'Robina Romany',
             jobTitle: 'Founder of Rubies',
@@ -178,7 +175,6 @@
             profileImageSize: 'w-36 h-36 sm:w-48 sm:h-48',
             coverImage: 'https://ik.imagekit.io/fojb8puzo/2yhjgtfrdfgvath.png',
 
-            // ---------- أزرار التواصل ----------
             contacts: [
                 { icon: 'fa-solid fa-phone', label: 'Call', url: 'tel:+201201828084' },
                 { icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', url: 'https://wa.me/201201828084' },
@@ -186,7 +182,6 @@
                 { icon: 'fa-solid fa-coins', label: 'Instapay', url: 'https://ipn.eg/S/robinaromany/instapay/6EFmAQ' },
             ],
 
-            // ---------- سوشيال ميديا ----------
             socials: [
                 { icon: 'fa-brands fa-instagram', url: 'https://www.facebook.com/robina.romany.3', label: 'Instagram' },
                 { icon: 'fa-brands fa-facebook', url: 'https://www.instagram.com/robina.romany.3', label: 'Facebook' }
@@ -194,14 +189,11 @@
 
             qrCodeImageUrl: 'https://ik.imagekit.io/fojb8puzo/qr-code%20(19).png',
 
-            // ==========================================================
-            //  🎨  الألوان الجديدة — وردي غامق / فوشيا + أبيض + وردي فاتح
-            // ==========================================================
             colors: {
-                cardBg: '255, 255, 255', // خلفية الكارد شبه شفافة (بيضاء)
-                textPrimary: '#2a0f1c', // وردي غامق جداً للنص الأساسي
-                textSecondary: '#a04a70', // وردي متوسط للعنوان الفرعي
-                textMuted: '#c0809a', // وردي باهت
+                cardBg: '255, 255, 255',
+                textPrimary: '#2a0f1c',
+                textSecondary: '#a04a70',
+                textMuted: '#c0809a',
                 buttonBg: 'linear-gradient(135deg, #E33284, #c02a72)',
                 buttonText: '#ffffff',
                 buttonBorder: '227, 50, 132',
@@ -225,18 +217,18 @@
             whatsappRequestNumber: '+201090225298',
         };
 
-        // ============================================================
-        //  UTILS
-        // ============================================================
         const trackClick = (label) => {
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'button_click', { event_category: 'engagement', event_label: label });
             }
         };
 
+        // ============================================================
+        //  ✅  تحميل vCard بطريقة تعمل في Safari (data: URI)
+        // ============================================================
         const downloadVcard = () => {
             trackClick('download_vcard');
-            // ✅ إزالة المسافات البادئة (بدون فراغات قبل كل سطر)
+
             const vcard = `BEGIN:VCARD
         VERSION:3.0
         FN:${CONFIG.vCard.fn || CONFIG.fullName}
@@ -246,18 +238,17 @@
         EMAIL:${CONFIG.vCard.email}
         URL:${CONFIG.vCard.url}
         END:VCARD`;
-            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
+
+            // تحويل النص إلى Base64 لتجنب مشاكل الترميز
+            const base64 = btoa(unescape(encodeURIComponent(vcard)));
+            const dataUri = `data:text/vcard;charset=utf-8;base64,${base64}`;
+
             const a = document.createElement('a');
-            a.href = url;
+            a.href = dataUri;
             a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}.vcf`;
             document.body.appendChild(a);
             a.click();
-            // ✅ تأخير بسيط لضمان بدء التحميل قبل الإزالة
-            setTimeout(() => {
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }, 200);
+            document.body.removeChild(a);
         };
 
         const downloadQR = () => {
@@ -272,16 +263,12 @@
             }
         };
 
-        // ============================================================
-        //  COMPONENT
-        // ============================================================
         function DigitalBusinessCard() {
             const colors = CONFIG.colors;
 
             return (
                 <div className="glass-card rounded-[2.5rem] shadow-2xl overflow-hidden transition-all duration-500">
 
-                    {/* ===== HEADER ===== */}
                     <div className="relative h-48 header-gradient flex items-center justify-center border-b pink-border">
                         {CONFIG.coverImage && (
                             <div
@@ -305,10 +292,8 @@
                         </div>
                     </div>
 
-                    {/* ===== BODY ===== */}
                     <div className="pt-16 sm:pt-20 pb-6 px-5 sm:px-6 space-y-6">
 
-                        {/* الاسم + المسمى */}
                         <div className="text-center space-y-1">
                             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight name-pink">
                                 {CONFIG.fullName}
@@ -318,7 +303,6 @@
                             </h2>
                         </div>
 
-                        {/* ===== أزرار التواصل ===== */}
                         <div className="grid grid-cols-1 gap-3">
                             {CONFIG.contacts.map((btn, idx) => (
                                 <a
@@ -337,7 +321,6 @@
                             ))}
                         </div>
 
-                        {/* ===== أيقونات السوشيال ===== */}
                         <div className="flex justify-center items-center gap-6 pt-2">
                             {CONFIG.socials.map((social, idx) => (
                                 <a
@@ -354,7 +337,6 @@
                             ))}
                         </div>
 
-                        {/* ===== QR ===== */}
                         {CONFIG.qrCodeImageUrl && (
                             <div className="flex justify-center pt-2">
                                 <div className="qr-wrapper cursor-pointer" onClick={downloadQR}>
@@ -372,7 +354,6 @@
                             </div>
                         )}
 
-                        {/* ===== أزرار الإجراءات ===== */}
                         <div className="flex flex-col items-center gap-3 pt-4">
                             <button
                                 onClick={downloadVcard}
@@ -393,7 +374,6 @@
                             </a>
                         </div>
 
-                        {/* ===== تذييل ===== */}
                         <div className="pt-6 text-center footer-text">
                             POWERED BY <span>CARDVIA</span>
                         </div>
